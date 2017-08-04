@@ -1,29 +1,12 @@
-<html>
-    <head>
-        <title>Jerry's blog</title>
-    </head>
-    
-    <style>
-
-	
-	#p01{font-family:fantasy; color:blue; font-size:25px;}
-	#p02 {font-family:"Courier New", Courier, monospace; color:black; font-size:20px;}  
-    
-    </style>		
-    
-    <body>
-        <div>
-		<h1><a href="">Jerry's Blog</a></h1>	
-        </div>
-
-	{% for post in posts %}
-	   <div>
-		<p id='p02'>Published: {{post.published_date}}</p>
-		<h2><a href=''>{{post.title}}</a></h2>
-		<p id='p01'>{{post.text|linebreaksbr}}</p>
-	   </div>
-	{% endfor %}
-    
-    </body>
-</html>
-
+{% extends 'blog/base.html' %}
+{% block content %}
+                	{% for post in posts %}
+                	   <div class='post'>
+                           <div class='date'>
+                		        <p>Published: {{post.published_date}}</p>
+                           </div>
+                    	   <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+                    	   <p>{{post.text|linebreaksbr}}</p>
+                	   </div>
+                	{% endfor %}
+{% endblock %}
