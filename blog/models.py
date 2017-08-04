@@ -16,7 +16,7 @@ class Post(models.Model):
         
     def __str__(self):
         return self.title
-print(timezone.now())
+
 
 
 '''from django.utils import timezone
